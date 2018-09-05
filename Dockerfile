@@ -25,7 +25,7 @@ RUN npm install
 COPY . .
 
 # Our application listens on port 8080
-EXPOSE 8080
+EXPOSE 8585
 
 # Start our application, this runs the "start" script defined in package.json
 CMD [ "npm", "start" ]

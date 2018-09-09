@@ -1,6 +1,6 @@
 var http = require("http");
 const port = 8585;
- 
+
 const sensorLib = require('node-dht-sensor');
 
 sensorLib.initialize(22,12)
@@ -16,10 +16,10 @@ function read() {
 
 process.on('SIGINT', () =>{
  clearInterval(interval);
-console.log('Bye! motherf!');
+console.log('Bye, Bye! See you again soon');
 process.exit();
 });
- 
+
 http.createServer(function(req,res){
   console.log('New incoming client request for ' + req.url);
   res.writeHeader(200, {'Content-type': 'application/json'});
@@ -29,6 +29,9 @@ http.createServer(function(req,res){
     break;
     case '/light':
     res.write('{"light" :' + randomInt(1,100) + '}');
+    break;
+    case '/humidity':
+    res.write('{"humidity" :' + readout.humidity.toFixed(2) + '}');
     break;
     default:
       res.write('{"hello" : "world"}');

@@ -38,4 +38,4 @@ http.createServer(function(req,res){
   }
   res.end();
 }).listen(port);
-console.log('Server started ' + port);
+console.log('Server started localhost:' + port);
